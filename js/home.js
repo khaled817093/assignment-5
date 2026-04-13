@@ -245,13 +245,13 @@ if (newIssueBtn) {
 const issueForm = document.getElementById("issue-submit-form");
 if (issueForm) {
     issueForm.addEventListener("submit", function(e) {
-        e.preventDefault(); // পেজ রিফ্রেশ হওয়া আটকাবে
+        e.preventDefault(); 
         
         const usernameField = document.getElementById("form-username");
         const commentField = document.getElementById("form-comment");
         const submitBtn = document.getElementById("submit-btn");
 
-        // যদি ফিল্ডগুলো খুঁজে না পায় তবে এরর দেবে না
+
         if (!usernameField || !commentField || !submitBtn) {
             console.error("Input fields or Submit button not found in HTML!");
             return;
@@ -260,7 +260,6 @@ if (issueForm) {
         const username = usernameField.value;
         const comment = commentField.value;
 
-        // বাটনে লোডিং দেখানো
         submitBtn.innerHTML = `<span class="loading loading-infinity loading-md"></span> Sending...`;
         submitBtn.disabled = true;
 
@@ -270,7 +269,6 @@ if (issueForm) {
             to_name: "Khaled Masud"
         };
 
-        // মনে রাখবেন: 'YOUR_SERVICE_ID' এবং 'YOUR_TEMPLATE_ID' অবশ্যই পাল্টাতে হবে
         emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', templateParams)
             .then(function(response) {
                 alert("Your problem has been successfully submitted.");
